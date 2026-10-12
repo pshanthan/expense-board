@@ -52,11 +52,11 @@ export class ListComponent implements OnInit {
     this.editingId = e.id ?? null;
     const raw = this.expenseForm.getRawValue();
     this.expenseForm.patchValue({
-      title: raw.title,
-      category: raw.category,
-      paid: raw.paid,
-      date: raw.date,
-      amount: String(raw.amount),
+      title: e.title,
+      category: e.category,
+      paid: e.paid,
+      date: e.date,
+      amount: String(e.amount),
     });
   }
 }
