@@ -1,0 +1,28 @@
+{
+  "expenses": [
+    {
+      "id": 1,
+      "title": "Groceries",
+      "category": "Food",
+      "amount": 85,
+      "date": "2026-10-10",
+      "paid": true
+    },
+    {
+      "id": 2,
+      "title": "Gas",
+      "category": "Transport",
+      "amount": 40,
+      "date": "2026-10-11",
+      "paid": true
+    },
+    {
+      "id": 3,
+      "title": "Gym membership",
+      "category": "Health",
+      "amount": 30,
+      "date": "2026-10-12",
+      "paid": false
+    }
+  ]
+}
