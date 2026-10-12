@@ -59,6 +59,14 @@ export class ListComponent implements OnInit {
     });
   }
   onSubmit(e: Expense) {
+    const raw = this.expenseForm.getRawValue();
+    const expense: Expense = {
+      title: raw.title,
+      category: raw.category,
+      amount: Number(raw.amount),
+      date: raw.date,
+      paid: raw.paid,
+    };
     if (this.editingId) {
       const found = this.expenses.filter(
         (expense) => expense.id === this.editingId,
