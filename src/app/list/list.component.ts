@@ -56,7 +56,7 @@ export class ListComponent implements OnInit {
       category: raw.category,
       paid: raw.paid,
       date: raw.date,
-      amount: raw.amount,
+      amount: String(raw.amount),
     });
   }
 }
