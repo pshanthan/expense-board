@@ -58,4 +58,13 @@ export class ListComponent implements OnInit {
       amount: String(e.amount),
     });
   }
+  onSubmit(e: Expense) {
+    if (this.editingId) {
+      const found = this.expenses.filter(
+        (expense) => expense.id === this.editingId,
+      );
+      if (found) {
+      }
+    }
+  }
 }
