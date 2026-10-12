@@ -50,7 +50,6 @@ export class ListComponent implements OnInit {
   }
   startEdit(e: Expense) {
     this.editingId = e.id ?? null;
-    const raw = this.expenseForm.getRawValue();
     this.expenseForm.patchValue({
       title: e.title,
       category: e.category,
