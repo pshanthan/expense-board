@@ -12,4 +12,7 @@ export class ExpenseService {
   getExpenses(): Observable<Expense[]> {
     return this.httpClient.get<Expense[]>(this.apiUrl);
   }
+  addExpense(e: Expense): Observable<Expense> {
+    return this.httpClient.post<Expense>(this.apiUrl, e);
+  }
 }
