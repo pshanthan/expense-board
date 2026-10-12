@@ -2,21 +2,61 @@ import { Component, OnInit } from '@angular/core';
 import { Expense } from '../models/Expense';
 import { ExpenseService } from '../expense.service';
 import { CommonModule } from '@angular/common';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-list',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
 export class ListComponent implements OnInit {
   expenses: Expense[] = [];
-
+  editingId: number | null = null;
+  expenseForm = new FormGroup({
+    title: new FormControl('', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    category: new FormControl('', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    amount: new FormControl('', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    date: new FormControl('', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    paid: new FormControl(false, {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+  });
   constructor(private expenseService: ExpenseService) {}
   ngOnInit(): void {
     this.getExpenses();
   }
+
   getExpenses() {
     this.expenseService.getExpenses().subscribe((e) => (this.expenses = e));
+  }
+  startEdit(e: Expense) {
+    this.editingId = e.id ?? null;
+    const raw = this.expenseForm.getRawValue();
+    this.expenseForm.patchValue({
+      title: raw.title,
+      category: raw.category,
+      paid: raw.paid,
+      date: raw.date,
+      amount: raw.amount,
+    });
   }
 }
