@@ -1,3 +1,12 @@
+<form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+  <input formControlName="title" />
+  <input formControlName="category" />
+  <input formControlName="amount" />
+  <input formControlName="date" />
+  <input formControlName="paid" />
+  <button type="submit"></button>
+</form>
+
 <div *ngFor="let e of expenses">
   {{ e.title }} - {{ e.date }} -{{ e.title }} - {{ e.category }} -
   {{ e.amount }} -{{ e.paid }}
